@@ -1,0 +1,33 @@
+.navbar-body {
+  background-color: #333;
+  width: 100%;
+  min-height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-icon {
+  padding: 30px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  height: 100%;
+}
+
+.navbar-user {
+  padding: 30px;
+  color: white;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
