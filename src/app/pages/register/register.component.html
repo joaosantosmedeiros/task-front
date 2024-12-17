@@ -1,0 +1,27 @@
+<form [formGroup]="form" >
+
+  <div class="rows">
+    <div class="row">
+      <h3>Registro</h3>
+      <mat-form-field style="width: 250px;">
+        <mat-label>Login</mat-label>
+        <input matInput formControlName="login" placeholder="login" required/>
+        <mat-error *ngIf="login.invalid">Login é obrigatório.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field style="width: 250px;">
+        <mat-label>Senha</mat-label>
+        <input matInput formControlName="password" placeholder="senha" required/>
+        <mat-error *ngIf="password.invalid">Senha é obrigatória.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="actions">
+      <p>Já possui uma conta? <a routerLink="/login">Login</a></p>
+      <button mat-flat-button type="submit">Registrar</button>
+    </div>
+
+  </div>
+
+</form>
