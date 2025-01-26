@@ -1,7 +1,46 @@
-<div class="home-body">
-  <div class="body-header">
-    <h2>Task Manager</h2>
-    <p>O seu gerenciador de tarefas!</p>
+<section>
+
+  <div class="home-body">
+
+    <div class="body-header">
+      <h2>Task Manager</h2>
+      <p>O seu gerenciador de tarefas!</p>
+    </div>
+
+    <div class="body-content">
+      <h4>Tarefas</h4>
+
+      @if(isLoadingTasks) {
+        <mat-spinner></mat-spinner>
+      } @else if (tasks.length < 1 && !isLoadingTasks) {
+        <p>Não há tarefas cadastradas.</p>
+      } @else {
+        <div class="tasks">
+          @for (task of tasks; track $index) {
+            <div class="task">
+              <div class="task-body">
+                <h6>{{task.description}}</h6>
+                @if (task.completed) {
+                  <p class="task-status">Completa: <mat-icon class="check" >check</mat-icon></p>
+                } @else {
+                  <p class="task-status">Completa: <mat-icon class="uncheck" >close</mat-icon></p>
+                }
+              </div>
+
+              <div class="actions">
+                <button mat-icon-button (click)="updateStatus(task.id)">
+                  <mat-icon class="complete">done_all</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteTask(task.id)">
+                  <mat-icon class="trash">delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
   </div>
 
-</div>
+</section>
