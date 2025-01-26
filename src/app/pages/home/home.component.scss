@@ -15,11 +15,10 @@ p {
   margin: 2em 0;
 }
 
-.body-content {
-}
 
 .tasks {
   padding: 0 .75em;
+  margin-bottom: 20px;
 }
 
 .task {
@@ -60,4 +59,13 @@ p {
 
 .complete {
   color: paleturquoise;
+}
+
+
+@media (min-width: 700px) {
+  section {
+    padding: 0 5em;
+    width: 500px;
+    margin: 0 auto;
+  }
 }

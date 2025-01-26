@@ -7,6 +7,28 @@
       <p>O seu gerenciador de tarefas!</p>
     </div>
 
+    <div class="body-form">
+      <form [formGroup]="form" (keydown.enter)="$event.preventDefault()">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Descrição</mat-label>
+          <input matInput placeholder="descrição" formControlName="descricao" maxlength="30">
+          @if (descricao.invalid && (descricao.touched || submitted)) {
+            <mat-error>
+              @if (descricao.errors!['required']) {
+                <span>Descrição é obrigatória.</span>
+              }
+              @if (descricao.errors!['maxlength']) {
+                <span>Tamanho máximo: 30.</span>
+              }
+            </mat-error>
+          }
+          <mat-hint align="end">{{ descricao.value ? descricao.value.length : 0 }} / 30</mat-hint>
+        </mat-form-field>
+
+        <button type="submit" style="margin: 10px 0 25px;" (click)="submit()" mat-flat-button>Inserir</button>
+      </form>
+    </div>
+
     <div class="body-content">
       <h4>Tarefas</h4>
 
@@ -28,10 +50,10 @@
               </div>
 
               <div class="actions">
-                <button mat-icon-button (click)="updateStatus(task.id)">
+                <button mat-icon-button (click)="updateStatus(task.id!)">
                   <mat-icon class="complete">done_all</mat-icon>
                 </button>
-                <button mat-icon-button (click)="deleteTask(task.id)">
+                <button mat-icon-button (click)="deleteTask(task.id!)">
                   <mat-icon class="trash">delete</mat-icon>
                 </button>
               </div>
