@@ -1,0 +1,82 @@
+section {
+  padding: 0 2.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: bold;
+}
+
+p {
+  margin: 0;
+}
+
+.body-content {
+  margin: 2em 0;
+}
+
+
+.tasks {
+  padding: 0 .75em;
+  margin-bottom: 20px;
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  margin: .75em 0;
+  background-color: #2b2529;
+  border-radius: .5em;
+  height: 150px;
+  padding: 0 10px;
+}
+
+.task-status{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.check {
+  color: rgb(21, 201, 21);
+}
+
+.uncheck {
+  color: rgb(221, 62, 62);
+}
+
+.edit {
+  color: rgb(159, 159, 209);
+}
+
+.trash {
+  color: rgb(238, 221, 144);
+}
+
+.complete {
+  color: paleturquoise;
+}
+
+.body-toggle {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin: 1em 0;
+}
+
+span {
+  font-weight: bold;
+}
+
+
+@media (min-width: 700px) {
+  section {
+    padding: 0 5em;
+    width: 500px;
+    margin: 0 auto;
+  }
+}

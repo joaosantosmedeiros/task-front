@@ -1,0 +1,45 @@
+<section>
+
+  <div class="home-body">
+
+    <div class="body-content">
+      <h2>Tarefas Por Status</h2>
+      <div class="body-toggle">
+        <p>Exibindo apenas tarefas <span>{{showOnlyCompletedTasks ? 'COMPLETAS' : 'INCOMPLETAS'}}</span> </p>
+        <mat-slide-toggle type="radio" name="showOnlyCompletedTasks" [(ngModel)]="showOnlyCompletedTasks" (change)="changeStatus()"></mat-slide-toggle>
+      </div>
+
+      @if(isLoadingTasks) {
+        <mat-spinner></mat-spinner>
+      } @else if (tasks.length < 1 && !isLoadingTasks) {
+        <p>Não há tarefas completas.</p>
+      } @else {
+        <div class="tasks">
+          @for (task of tasks; track $index) {
+            <div class="task">
+              <div class="task-body">
+                <h6>{{task.description}}</h6>
+                @if (task.completed) {
+                  <p class="task-status">Completa: <mat-icon class="check" >check</mat-icon></p>
+                } @else {
+                  <p class="task-status">Completa: <mat-icon class="uncheck" >close</mat-icon></p>
+                }
+              </div>
+
+              <div class="actions">
+                <button mat-icon-button (click)="updateStatus(task.id!)">
+                  <mat-icon class="complete">done_all</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteTask(task.id!)">
+                  <mat-icon class="trash">delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+
+</section>

@@ -12,5 +12,4 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  isLogged = true;
 }

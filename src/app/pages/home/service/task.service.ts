@@ -13,11 +13,19 @@ export class TaskService {
   private readonly uriTaskById = this.apiUrl + '';
   private readonly uriEditarTask = this.apiUrl + '';
   private readonly uriInserirTask = this.apiUrl + '';
+  private readonly uriTasksCompletas = this.apiUrl + '/completed';
+  private readonly uriTasksIncompletas = this.apiUrl + '/incompleted';
 
   constructor(private http: HttpClient) {}
 
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.uriListarTasks).pipe(first(), retry(1));
+  }
+
+  getTasksByStatus(completed: boolean): Observable<Task[]>{
+    if(completed) return this.http.get<Task[]>(this.uriTasksCompletas).pipe(first(), retry(1));
+
+    return this.http.get<Task[]>(this.uriTasksIncompletas).pipe(first(), retry(1));
   }
 
   remover(id: number): Observable<any> {
